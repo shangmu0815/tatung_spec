@@ -1,0 +1,42 @@
+//					//薪資計算別判斷表頭員工類型
+//					if(vo1.getFld(7).equals("1")||vo1.getFld(7).equals("2")){			
+//						sEmployeeType="技，事員";																			
+//					}else if(vo1.getFld(7).equals("3") || vo1.getFld(7).equals("4")){  
+//						sEmployeeType="職員";						
+//					}else if(vo1.getFld(7).equals("5") || vo1.getFld(7).equals("6")){	
+//						sEmployeeType="經銷中心";
+//					}
+//					//持股年月判斷表頭PAY類型	
+//					if(vo1.getFld(8).equals("1111")){												
+//						sBonus="節金";													
+//					}else if(vo1.getFld(8).equals("2222")){
+//						sBonus="年終獎金";	
+//					}
+//					//公司表頭																													//單位代號前1碼比較																					
+//					if(vo1.getFld(6).equals("0")){													
+//						sComHeader="共同單位";
+//					}else if(vo1.getFld(6).equals("7")){											
+//						sComHeader="經銷中心";
+//					}else if(vo1.getFld(6).equals("8")){											
+//						sComHeader="區站";
+//					}else if(Integer.parseInt(vo1.getFld(1))>899&&Integer.parseInt(vo1.getFld(1))<925){	//單位代號前3碼比較
+//						sComHeader="投資公司";
+//					}else if(Integer.parseInt(vo1.getFld(1))>99&&Integer.parseInt(vo1.getFld(1))<151){
+//						sComHeader="總公司廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>150&&Integer.parseInt(vo1.getFld(1))<201){
+//						sComHeader="板橋廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>200&&Integer.parseInt(vo1.getFld(1))<251){
+//						sComHeader="總公司廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>250&&Integer.parseInt(vo1.getFld(1))<301){
+//						sComHeader="三峽廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>300&&Integer.parseInt(vo1.getFld(1))<351){
+//						sComHeader="北投廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>350&&Integer.parseInt(vo1.getFld(1))<401){
+//						sComHeader="楊梅廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>400&&Integer.parseInt(vo1.getFld(1))<451){
+//						sComHeader="冷氣廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>450&&Integer.parseInt(vo1.getFld(1))<501){
+//						sComHeader="重電廠";
+//					}else if(Integer.parseInt(vo1.getFld(1))>500&&Integer.parseInt(vo1.getFld(1))<551){	//單位代號前3碼比較
+//						sComHeader="重電二廠";
+//					}

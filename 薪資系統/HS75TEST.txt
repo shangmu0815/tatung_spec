@@ -1,0 +1,146 @@
+	//根據 有用到/已列印 的 最後一行的列數row(print_line), 判斷是否要列印標頭.
+	//若要列印標頭的話, 則回傳標頭字串; 否則回傳空字串.
+	private String headerMake(int printLine, int lineOfPage,String deptnoFirst1,String deptnoFirst3,String salcyce,String dpsdte) {
+		String sHeader="";
+		//表頭
+		//標頭: 共7行
+			sHeader += HS_Source.repeatSignString("	", 120) + "\r\n";
+			sHeader += HS_Source.repeatSignString(" ", 3);				
+			if(salcyce.equals("1") || salcyce.equals("2")){  //薪資計算別=1,2
+				sHeader += "技，事員" + HS_Source.repeatSignString(" ", 5);  			
+			}else if(salcyce.equals("3") || salcyce.equals("4")){  //薪資計算別=3,4
+				sHeader += "職員" + HS_Source.repeatSignString(" ", 5);
+			}else if(salcyce.equals("5") || salcyce.equals("6")){	//薪資計算別=5,6
+				sHeader += "經銷中心" + HS_Source.repeatSignString(" ", 5);
+			}				
+			//不同持股年月,不同header
+			if(dpsdte.equals("1111")){
+				sHeader +="節金"+ "\r\n";
+			}else if(dpsdte.equals("2222")){
+				sHeader +="年終獎金"+ "\r\n";
+			}else{
+				sHeader +="\r\n";
+			}
+			sHeader += HS_Source.repeatSignString("	", 120) + "\r\n";	
+			sHeader += HS_Source.repeatSignString(" ", 6);
+			String comHeader="";
+			if(deptnoFirst1.equals("0")){
+				comHeader="共同單位";
+			}else if(deptnoFirst1.equals("7")){
+				comHeader="經銷中心";
+			}else if(deptnoFirst1.equals("8")){
+				comHeader="區站";
+			}else if(Integer.parseInt(deptnoFirst3)>899&&Integer.parseInt(deptnoFirst3)<925){
+				comHeader="投資公司";
+			}else if(Integer.parseInt(deptnoFirst3)>99&&Integer.parseInt(deptnoFirst3)<151){
+				comHeader="總公司廠";
+			}else if(Integer.parseInt(deptnoFirst3)>150&&Integer.parseInt(deptnoFirst3)<201){
+				comHeader="板橋廠";
+			}else if(Integer.parseInt(deptnoFirst3)>200&&Integer.parseInt(deptnoFirst3)<251){
+				comHeader="總公司廠";
+			}else if(Integer.parseInt(deptnoFirst3)>250&&Integer.parseInt(deptnoFirst3)<301){
+				comHeader="三峽廠";
+			}else if(Integer.parseInt(deptnoFirst3)>300&&Integer.parseInt(deptnoFirst3)<351){
+				comHeader="北投廠";
+			}else if(Integer.parseInt(deptnoFirst3)>350&&Integer.parseInt(deptnoFirst3)<401){
+				comHeader="楊梅廠";
+			}else if(Integer.parseInt(deptnoFirst3)>400&&Integer.parseInt(deptnoFirst3)<451){
+				comHeader="冷氣廠";
+			}else if(Integer.parseInt(deptnoFirst3)>450&&Integer.parseInt(deptnoFirst3)<501){
+				comHeader="重電廠";
+			}else if(Integer.parseInt(deptnoFirst3)>500&&Integer.parseInt(deptnoFirst3)<551){
+				comHeader="重電二廠";
+			}
+			sHeader +=comHeader;
+			sHeader += HS_Source.repeatSignString(" ", 40-comHeader.length());
+			String strSysTime=HS_Source.getSysTime();					  //Sys time
+			sHeader +=HS_Source.toGetChineseDate(strSysTime,1);  //年
+			sHeader += HS_Source.repeatSignString(" ", 7);
+			sHeader +=HS_Source.toGetChineseDate(strSysTime,2);  //月
+			sHeader += HS_Source.repeatSignString(" ", 7);	
+			sHeader +=HS_Source.toGetChineseDate(strSysTime,3);  //日	
+			sHeader += HS_Source.repeatSignString(" ", 54);
+//			String page=String.valueOf((print_line / lineOfPage)+1);  //頁數
+//			int pageLength=page.length();  //頁數的長度
+//			sHeader +=  "第" + HS_Source.repeatSignString(" ", 4-pageLength) + sPage + "頁\r\n";
+//			sHeader +=HS_Source.fillZero(String.valueOf(page),2)+ "\r\n";
+			sHeader += HS_Source.repeatSignString("	", 120) + "\r\n";
+			sHeader += HS_Source.repeatSignString("	", 120) + "\r\n";
+			sHeader += HS_Source.repeatSignString("	", 120) + "\r\n";			
+		return sHeader;
+	}
+
+
+	
+	//根據 有用到/已列印 的 最後一行的列數row(print_line), 判斷是否要列印標頭.
+	//若要列印標頭的話, 則回傳標頭字串; 否則回傳空字串.
+	private String headerMaker(int print_line, int lineOfPage,String deptnoFirstCode,String dpsdate,String salcyce1, String salcyce2, String now_cdate_str) {
+		String sHeader="";
+		//控制 空白列列數
+		int blankRowNum=1;
+		//控制 空白個數
+		int blankNum=120;			
+
+		int str=108;	
+		//表頭加印
+		String strAddHeader="";
+		//標頭: 共7行
+		for(int i=0;i<blankRowNum;i++){
+			sHeader += HS_Source.repeatSignString("	", blankNum) + "\r\n";
+		}
+			sHeader += HS_Source.repeatSignString(" ", 3);
+			//薪資計算別=1,2	
+			if(salcyce1.equals("1") && salcyce2.equals("2"))  
+				sHeader += "事技員" + HS_Source.repeatSignString(" ", 5);
+			else if(salcyce1.equals("3") && salcyce2.equals("4"))  //薪資計算別=3,4
+				sHeader += "職  員" + HS_Source.repeatSignString(" ", 5);
+			else if(salcyce1.equals("5") && salcyce2.equals("6"))  //薪資計算別=5,6
+				sHeader += "經銷區站" + HS_Source.repeatSignString(" ", 5);
+			//不同持股年月,不同header
+			if(dpsdate.equals("1111")){
+				strAddHeader="節金"+ "\r\n";
+			}else if(dpsdate.equals("2222")){
+				strAddHeader="年終獎金"+ "\r\n";
+			}else{
+				strAddHeader="\r\n";
+			}
+			sHeader += strAddHeader;
+			sHeader += HS_Source.repeatSignString("	", 120) + "\r\n";	
+			sHeader += HS_Source.repeatSignString("	", 120);
+			//不同單位代號第一碼,不同header	
+			switch (Integer.parseInt(deptnoFirstCode))
+			{
+				case 0:	 
+				case 1:	
+				case 2:	
+				case 3:	
+				case 4:	
+				case 5:	
+				case 6:	
+					sHeader+= "大同公司";
+					break;
+				case 7: 
+					sHeader+= "經銷中心";
+					break;
+				case 8: 
+					sHeader+= "前線區站";
+					break;
+				case 9: 
+					sHeader+= "投資公司";
+					break;	
+			}
+			sHeader += HS_Source.repeatSignString(" ", 35) + "\r\n";					
+			String sPage=String.valueOf((print_line / lineOfPage)+1);  //頁數
+			int page_length=sPage.length();  //頁數的長度
+			sHeader +=  "第" + HS_Source.repeatSignString(" ", 4-page_length) + sPage + "頁\r\n";
+				
+			sHeader +=  " 報表" + HS_Source.repeatSignString(" ", 16) + "有Ｑ表無出勤異常表" + 
+			HS_Source.repeatSignString(" ", 10) + "印表日期" + now_cdate_str + "\r\n\r\n";
+			sHeader += " 頁次  身份証字號  加扣款代號  加扣款金額\r\n";
+			sHeader += HS_Source.repeatSignString("=", 66) + "\r\n";
+		return sHeader;
+	}
+
+//			final int lineOfPage=26;  //一頁共有26行
+//			String deptnoFirst3Bef="";  //前一筆記錄的單位代號前3碼
+//			int printLine=0;  //有用到/已列印 的 最後一行的行數(from 1,2,3,...)	

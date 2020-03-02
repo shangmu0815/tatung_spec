@@ -1,0 +1,54 @@
+Batch 原始檔和中介碼 分目錄存放：
+
+1. D:\IMIS_Batchs\tatung\HS\X\src：放
+(1). .jar(只有.java，沒有.class) （H_HSN_src.jar. 例如: H_HS2_src.jar）
+(2). .jar解壓縮後產生的 目錄和.java
+
+2. D:\IMIS_Batchs\tatung\HS\X\exec：放
+(1). D:\IMIS_Batchs\tatung\HS\X\src目錄下(包含n層子目錄)全部.java編譯好的 目錄和.class
+(2). .jar(上面(1)壓縮產生的.jar) （H_HSN.jar. 例如: H_HS2.jar）
+(3). .bat （H_HSN_NN.bat. 例如: H_HS2_24.bat）
+
+3. D:\IMIS_Batchs\tatung\HS\X\lib：放 被呼叫/使用的
+(1). .jar
+(2). .class
+
+1,2,3中的 X: 表 HS系統中13個模組 的 某一個模組.
+             為 1, 2, 3,..., 9, A, B, C, D.
+
+之後，於Windows檔案總管中，就直接連按2下滑鼠左鍵執行 D:\IMIS_Batchs\tatung\HS\X\exec\XXX.bat 檔案即可。
+
+P.S.
+假若 進入點main()於A.java, 而A.java有用到B.java:
+  若B.java  有變更的話, 則在編譯A.java時, 會自動編譯B.java(無論B.class是否已經存在);
+  若B.java沒有變更的話, 則在編譯A.java時, 不會編譯B.java.
+
+
+2.(3). H_HS2_24.bat 內容：
+:: ------------------------------------------------------
+:: 把 .jar 解壓縮
+:: ------------------------------------------------------
+cd D:\IMIS_Batchs\tatung\HS\2\src
+jar xf H_HS2_src.jar
+
+:: ------------------------------------------------------
+:: 編譯.java 並把產生的.class存放至exec目錄下
+:: ------------------------------------------------------
+cd com\tatung\imis\H\HS\model
+javac -classpath D:\IMIS_Batchs\tatung\HS\2\src;D:\IMIS_Batchs\tatung\HS\2\lib\sqljdbc.jar -d D:\IMIS_Batchs\tatung\HS\2\exec HS_24.java
+
+:: ------------------------------------------------------
+:: 把exec目錄下全部的.class壓縮 為 .jar
+:: ------------------------------------------------------
+cd D:\IMIS_Batchs\tatung\HS\2\exec
+jar cf H_HS2.jar com
+
+:: ------------------------------------------------------
+:: 執行 .jar
+:: ------------------------------------------------------
+java -classpath D:\IMIS_Batchs\tatung\HS\2\exec;D:\IMIS_Batchs\tatung\HS\2\lib\sqljdbc.jar;D:\IMIS_Batchs\tatung\HS\2\exec\H_HS2.jar com.tatung.imis.H.HS.model.HS_24
+
+:: ------------------------------------------------------
+:: 暫停
+:: ------------------------------------------------------
+pause

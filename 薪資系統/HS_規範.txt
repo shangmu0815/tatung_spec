@@ -1,0 +1,147 @@
+一. Batch:
+程式存放的位置為 D:\IMIS_Batchs\tatung
+
+1.
+1-1.
+com.tatung.imis.H.HS.HSX.dao
+(例如:
+com.tatung.imis.H.HS.HS1.dao
+com.tatung.imis.H.HS.HS2.dao
+...
+com.tatung.imis.H.HS.HSD.dao
+)
+->
+HS_NNXXXDAO.java
+(例如:
+HS_11DAO.java  (NN:11)
+)
+
+1-2.
+com.tatung.imis.H.HS.HSX.data
+->
+HS_NNXXXVO.java
+(例如:
+HS_11VO.java  (NN:11)
+)
+
+1-3.
+com.tatung.imis.H.HS.HSX.model
+->  Batch程式的進入點(main函數)
+HS_NN.java
+(例如:
+HS_11.java  (NN:11)
+)
+
+1-4.
+com.tatung.imis.H.HS.HSX.util
+->
+HS_XXX.java
+
+1-5.
+com.tatung.imis.H.HS.HSX.exception
+->
+HS_XXX.java
+
+2.
+存放共用的程式
+->
+com.tatung.imis.H.Common.dao
+com.tatung.imis.H.Common.data
+com.tatung.imis.H.Common.exception
+com.tatung.imis.H.Common.model
+com.tatung.imis.H.Common.util
+
+3.
+templates
+-> HSNNXXX.jod
+(例如:
+HS11.jod  (NN:11)
+)
+
+4.
+print
+-> e.Report製作報表 所產生/製作的檔案(.java, .class, .jod).
+HSNNXXX.sch
+HSNNXXX.class
+HSNNXXX.java
+HSNNXXX.jod
+(例如:
+HS11.sch
+HS11.class
+HS11.java
+HS11.jod
+)
+
+5.
+upload
+-> 上傳的檔案
+
+6.
+產生的報表檔
+-> 一定要為 文字檔
+C:\iMIS\THQ\HRM\Report\HS\X
+(例如:
+C:\iMIS\THQ\HRM\Report\HS\1
+C:\iMIS\THQ\HRM\Report\HS\2
+...
+C:\iMIS\THQ\HRM\Report\HS\D
+)
+
+HS_NNXXXRPTXXX.XXX
+(例如:
+HS_11RPT.sy5
+HS_11RPT.m65
+)
+
+7.
+產生的Log檔
+->
+C:\iMIS\THQ\HRM\Log\HS\X
+(例如:
+C:\iMIS\THQ\HRM\Log\HS\1
+C:\iMIS\THQ\HRM\Log\HS\2
+...
+C:\iMIS\THQ\HRM\Log\HS\D
+)
+
+HS_NN_YYYYMMDD.log  (文字檔)
+(例如:
+HS_11_20100118.log
+)
+
+
+二. On-Line:
+1,2,3,4,5. 除了 "Package的名稱跟Batch不太一樣,少了HSX"、"Batch是NN,On-Line是NNN"、
+           "model的檔名規則為HS_NNNXXXModel" 和
+           "多com.tatung.imis.H.HS.action Package,檔名規則為HS_NNNXXXAction.java" 之外，其餘皆相同.
+
+1-1.
+com.tatung.imis.H.HS.dao
+1-2.
+com.tatung.imis.H.HS.data
+1-3.
+com.tatung.imis.H.HS.model
+->
+HS_NNNXXXModel.java
+1-4.
+com.tatung.imis.H.HS.util
+1-5.
+com.tatung.imis.H.HS.exception
+1-6.
+com.tatung.imis.H.HS.action
+->
+HS_NNNXXXAction.java
+
+2.
+存放共用的程式
+->
+com.tatung.imis.H.Common.dao
+com.tatung.imis.H.Common.data
+com.tatung.imis.H.Common.exception
+com.tatung.imis.H.Common.model
+com.tatung.imis.H.Common.taglib
+com.tatung.imis.H.Common.util
+
+
+三. 預存程序, 使用者自定函數:
+HS_XXX

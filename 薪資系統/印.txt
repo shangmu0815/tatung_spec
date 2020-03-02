@@ -1,0 +1,17 @@
+//			for(int k=0;k<data1V.size();k++){
+//				H_tableVO vo=(H_tableVO)data1V.get(k);
+//				if(k==0)  //單位代號前1碼
+//				{
+//					sHeader=model.headerMake(printLine, lineOfPage,vo.getFld(6),vo.getFld(1),vo.getFld(7),vo.getFld(8)); //表頭
+//					sData += sHeader;  
+//					printLine += 7;  //共7row										
+//				}else if(!vo.getFld(1).equals(sTempDeptnoFirst3)){  //單位代號前3碼比較
+//					//印合計
+//					sHeader=model.headerMake(dataVO.getFld(5),dataVO.getFld(6),dataVO.getFld(5),dataVO.getFld(10),sPage); //表頭
+//					//印內容					
+//				}				
+//			}
+//			if(data1V.size()>0){
+//				//印合計
+//				//印總計
+//			}		
